@@ -55,3 +55,14 @@ Agrega archivos MDX en estas carpetas:
 ## Deploy
 
 El proyecto esta preparado para Vercel con rutas estaticas para contenido y endpoints serverless para formularios.
+
+## Vercel Notes
+
+Si un deploy falla durante `npm install` con errores de cache como `EEXIST`, `ENOENT` o renames dentro de `/vercel/.npm/_cacache/`, el problema suele estar en la cache del instalador y no en el codigo del proyecto.
+
+Pasos recomendados:
+
+1. Confirma que el proyecto en Vercel use Node 20.
+2. Vuelve a desplegar usando `Redeploy` -> `Use existing Build Cache: Off`.
+3. Si sigue fallando, limpia cualquier custom install command y deja el comportamiento por defecto de Vercel.
+4. Verifica que las variables `RESEND_API_KEY`, `CONTACT_TO_EMAIL` y `CONTACT_FROM_EMAIL` esten cargadas en `Production`.
